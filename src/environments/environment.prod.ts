@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  serverUrl: 'http://localhost:1337',
+  serverUrl: 'https://sheltered-garden-62297.herokuapp.com',
   firebase: {
     apiKey: 'AIzaSyBJD4TmdTU_MfsDiv21_-ndrm7gGYIGfsI',
     authDomain: 'recipe-a78ee.firebaseapp.com',
