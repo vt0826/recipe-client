@@ -1,3 +1,4 @@
+import { environment } from 'src/environments/environment';
 import { Injectable } from '@angular/core';
 
 import {
@@ -10,21 +11,22 @@ import {
   providedIn: 'root',
 })
 export class RecipesService {
-  private baseUrl = 'https://sheltered-garden-62297.herokuapp.com';
+  private baseUrl = environment.serverUrl;
 
   constructor(private http: HttpClient) {}
 
   getAllRecipes() {
-    return this.http.get(this.baseUrl + 'recipes');
+    console.log(this.baseUrl);
+    return this.http.get(this.baseUrl + '/recipes');
   }
   getRecipeById(id) {
     const options = id ? { params: new HttpParams().set('id', id) } : {};
 
-    return this.http.get(this.baseUrl + 'recipes', options);
+    return this.http.get(this.baseUrl + '/recipes', options);
   }
 
   createRecipe(recipe) {
-    return this.http.post(this.baseUrl + 'recipes', { recipe });
+    return this.http.post(this.baseUrl + '/recipes', { recipe });
   }
 
   /* updatePost(post) {
