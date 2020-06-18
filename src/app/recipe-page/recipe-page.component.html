@@ -1,0 +1,57 @@
+<a routerLink="/"> < Back to Recipes</a>
+
+<div *ngIf="recipe" class="recipe-container">
+  <div class="recipe-info">
+    <h1>{{ recipe.title }}</h1>
+    <p class="body-1">by {{ recipe.name }}</p>
+    <p class="caption">{{ recipe.updatedAt | date: "medium" }}</p>
+    <p class="caption">{{ recipe.description }}</p>
+  </div>
+  <div classs="recipe-steps">
+    <mat-vertical-stepper [linear]="isLinear" #stepper>
+      <mat-step
+        *ngFor="let step of recipe.steps"
+        [stepControl]="firstFormGroup"
+      >
+        <form [formGroup]="firstFormGroup">
+          <ng-template matStepLabel>{{ step.title }}</ng-template>
+          <div class="recipe-instruction">
+            <p>{{ step.instruction }}</p>
+            <img
+              *ngIf="step.pictureUrl"
+              mat-card-image
+              [src]="step.pictureUrl"
+              alt="steps photo"
+            />
+            <div *ngIf="step.videoUrl">
+              <span>
+                video link:
+                <a [href]="step.videoUrl">{{ step.videoUrl }}</a>
+              </span>
+              <iframe
+                [src]="step.videoUrl | safe"
+                frameborder="0"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+          <timer></timer>
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+
+      <mat-step>
+        <ng-template matStepLabel>Done</ng-template>
+        <p>You are now done.</p>
+        <div>
+          <button mat-button (click)="stepper.reset()">Reset</button>
+          <button mat-button (click)="naviagteToDashboard()">Done</button>
+        </div>
+      </mat-step>
+    </mat-vertical-stepper>
+  </div>
+</div>

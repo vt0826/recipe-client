@@ -1,0 +1,37 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 50px;
+}
+.title {
+  text-align: center;
+  width: 100%;
+}
+
+.create-recipe-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.full-width {
+  width: 100%;
+}
+.steps-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.button-row {
+  display: flex;
+  justify-content: space-between;
+}
+.pic-upload {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 5px 0;
+}

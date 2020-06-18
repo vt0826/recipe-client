@@ -1,0 +1,19 @@
+{
+  "hosting": [
+    {
+      "target": "recipe",
+      "public": "dist/recipe",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
+}

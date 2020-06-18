@@ -1,0 +1,123 @@
+<button mat-button>
+  <a routerLink="/"> < Back to Recipes</a>
+</button>
+<div class="container">
+  <h2 class="title">Create New Recipe</h2>
+  <form
+    #f="ngForm"
+    [formGroup]="form"
+    (ngSubmit)="create()"
+    class="create-recipe-form"
+  >
+    <!--------------------Recipe Deccription------------------------------>
+    <mat-form-field class="full-width">
+      <mat-label> Name of the Recipe</mat-label>
+      <input
+        matInput
+        required
+        formControlName="recipeName"
+        placeholder="Spaghetti and Meatball"
+      />
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <mat-label> Descripttion</mat-label>
+      <textarea
+        formControlName="description"
+        matInput
+        required
+        cdkTextareaAutosize
+        #autosize="cdkTextareaAutosize"
+        cdkAutosizeMinRows="1"
+        cdkAutosizeMaxRows="5"
+        placeholder="Ex. Let eggs cook in pan for 5 minutes..."
+      ></textarea>
+    </mat-form-field>
+
+    <!--------------------Steps------------------------------>
+    <div formArrayName="steps">
+      <div
+        *ngFor="let step of steps.controls; let i = index"
+        [formGroupName]="i"
+      >
+        <div class="steps-header">
+          <h3>Step : {{ i + 1 }}</h3>
+
+          <button
+            (click)="removeStep(i)"
+            mat-icon-button
+            color="basic"
+            type="button"
+            aria-label="icon button with delete icon"
+          >
+            <mat-icon>clear</mat-icon>
+          </button>
+        </div>
+        <mat-form-field class="full-width">
+          <mat-label> Title</mat-label>
+          <input
+            formControlName="title"
+            matInput
+            required
+            placeholder="Ex. Cook Eggs"
+          />
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <mat-label>Instruction</mat-label>
+          <textarea
+            formControlName="instruction"
+            required
+            matInput
+            cdkTextareaAutosize
+            #autosize="cdkTextareaAutosize"
+            cdkAutosizeMinRows="1"
+            cdkAutosizeMaxRows="5"
+            placeholder="Ex. Let eggs cook in pan for 5 minutes..."
+          ></textarea>
+        </mat-form-field>
+
+        <div class="pic-upload">
+          <mat-label>Picture upload</mat-label>
+        </div>
+        <input
+          id="fileInput"
+          type="file"
+          formControlName="pictureUrl"
+          name="file"
+          accept="image/*"
+          (change)="onFileSelected($event, i)"
+        />
+
+        <mat-form-field class="full-width">
+          <mat-label>Video link</mat-label>
+          <input
+            formControlName="videoUrl"
+            matInput
+            placeholder="add video link"
+          />
+        </mat-form-field>
+      </div>
+    </div>
+    <!--------------------------buttons---------------------->
+    <div class="button-row">
+      <button
+        (click)="addNewStep()"
+        mat-icon-button
+        color="primary"
+        type="button"
+        aria-label="icon button with add icon"
+      >
+        <mat-icon>add_circle_outline</mat-icon>
+        Next Step
+      </button>
+      <button
+        [disabled]="f.invalid"
+        type="submit"
+        mat-flat-button
+        color="primary"
+        aria-label="icon button with add icon"
+      >
+        submit
+      </button>
+    </div>
+  </form>
+</div>

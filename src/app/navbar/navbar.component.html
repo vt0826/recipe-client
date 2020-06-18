@@ -1,0 +1,42 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>Recipe</span>
+    <span class="example-spacer"></span>
+
+    <button
+      mat-icon-button
+      [matMenuTriggerFor]="menu"
+      aria-label="icon-button with a menu"
+      color="basic"
+    >
+      <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button (click)="navigateTo('/')" mat-menu-item>
+        <mat-icon>dashboard</mat-icon>
+        <span>All Recipes</span>
+      </button>
+     
+      <div *ngIf="auth.user$ | async as user; else login">
+       <button (click)="navigateTo('/create')"  mat-menu-item>
+        <mat-icon>add</mat-icon>
+        <span>Create Recipe</span>
+      </button>
+        <button mat-menu-item (click)="auth.signOut()">
+          <mat-icon>logout</mat-icon>
+          <span>logout</span>
+        </button>
+      </div>
+      <ng-template #login>
+       <button (click)="navigateTo('/create')"disabled=ture  mat-menu-item>
+        <mat-icon>add</mat-icon>
+        <span>Create Recipe</span>
+      </button>
+        <button mat-menu-item (click)="auth.googleSignin()">
+          <mat-icon>login</mat-icon>
+          <span>login with google account</span>
+        </button>
+      </ng-template>
+    </mat-menu>
+  </mat-toolbar-row>
+</mat-toolbar>

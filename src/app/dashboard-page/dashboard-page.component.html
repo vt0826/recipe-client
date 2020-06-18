@@ -1,0 +1,28 @@
+<div class="dash-container">
+  <mat-card
+    *ngFor="let recipe of recipes"
+    (click)="navigateToRecipe(recipe.id)"
+    class="card"
+  >
+    <img
+      *ngIf="recipe.steps[0]?.pictureUrl; else default"
+      mat-card-image
+      src="{{ recipe.steps[0].pictureUrl }}"
+      onError="this.src='/assets/img/default-pic.jpg'"
+      alt="step picture"
+    />
+
+    <ng-template #default>
+      <img mat-card-image src="/assets/default-pic.jpg" alt="recipe" />
+    </ng-template> 
+    <mat-card-header>
+      <mat-card-title>
+        <h2>{{ recipe.title | uppercase }}</h2>
+      </mat-card-title>
+      <mat-card-subtitle>
+        <h3>By {{ recipe.name | uppercase }}</h3>
+        <h4>{{ recipe.updatedAt | date: "medium" }}</h4>
+      </mat-card-subtitle>
+    </mat-card-header>
+  </mat-card>
+</div>

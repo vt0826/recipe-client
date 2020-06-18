@@ -1,0 +1,26 @@
+.dash-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+mat-card {
+  margin: 16px 0;
+  flex: 100%;
+  cursor: pointer;
+}
+mat-card img {
+  object-fit: cover; /*this makes the image in src fit to the size specified below*/
+}
+
+.example-header-image {
+  background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
+  background-size: cover;
+}
+
+@media (min-width: 600px) {
+  mat-card {
+    margin: 30px 16px;
+    flex: 0 calc(50% - 32px);
+  }
+}

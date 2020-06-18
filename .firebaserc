@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "recipe-a78ee": {
+      "hosting": {
+        "recipe": [
+          "recipe-a78ee"
+        ]
+      }
+    }
+  }
+}
