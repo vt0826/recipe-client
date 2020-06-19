@@ -73,8 +73,12 @@ export class CreateRecipePageComponent {
   onFileSelected(event, i) {
     this.selectedFile = event.target.files;
     let file = this.selectedFile.item(0);
+    console.log(file, 'file');
+
     this.currentUpload = new Upload(file);
+
     this.allUpLoads[i] = this.currentUpload;
+    console.log(this.currentUpload, 'con');
     this.upload.pushUpload(this.currentUpload);
   }
 

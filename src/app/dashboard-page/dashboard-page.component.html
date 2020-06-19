@@ -1,3 +1,7 @@
+<div class="no-recipe" *ngIf="!recipes">
+  <h2>No Recipe Yet!</h2>
+</div>
+
 <div class="dash-container">
   <mat-card
     *ngFor="let recipe of recipes"

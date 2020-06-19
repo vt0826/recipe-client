@@ -15,8 +15,9 @@ export class UploadService {
 
   async pushUpload(upload: Upload) {
     let storageRef = firebase.storage().ref();
+    const fileName = '1@' + Date.now() + upload.file.name;
     this.uploadTask = storageRef
-      .child(`${this.basePath}/${upload.file.name}`)
+      .child(`${this.basePath}/${fileName}`)
       .put(upload.file);
     const result = await this.uploadTask.on(
       firebase.storage.TaskEvent.STATE_CHANGED,
