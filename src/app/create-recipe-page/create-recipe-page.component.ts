@@ -79,8 +79,8 @@ export class CreateRecipePageComponent {
     let file = this.selectedFile.item(0);
 
     this.currentUpload = new Upload(file);
-
     this.allUpLoads[i] = this.currentUpload;
+
     this.upload.pushUpload(this.currentUpload);
   }
 

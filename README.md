@@ -1,27 +1,43 @@
-# Recipe
+<!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
+<h1 align="center">
+ Recipe Client
+</h1>
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.8.
+## 🧐 What's inside?
 
-## Development server
+A Website that will allow a user to create a cooking recipe . When creating a cooking recipe the user can add a “Step” to a recipe .
+Each step will have the following content:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+- \*Title (example : Cook eggs)
+- \*Text associated with it to describe the step(example: Let eggs cook in pan for 5 minutes)
+- \*The user will also be able to add images and links to videos to the step as well as optional content.
 
-## Code scaffolding
+Once a recipe is completed I want to be able to select the recipe from a list of all recipes created by these users and execute it
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Table of contents
 
-## Build
+- [General info](#general-info)
+- [Technologies](#technologies)
+- [Setup](#setup)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Technologies
 
-## Running unit tests
+Project is created with:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- Angular
+- Angular Material
+- Firebase Storage
 
-## Running end-to-end tests
+## Setup
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+To run this project, install it locally using npm:
 
-## Further help
+```
+$ cd ../recipe-clint
+$ npm install
+$ ng serve
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
+<!-- AUTO-GENERATED-CONTENT:END -->
