@@ -1,9 +1,6 @@
 import { Upload } from './upload';
 import { Injectable } from '@angular/core';
-import { auth } from 'firebase/app';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { Observable } from 'rxjs';
-
 import * as firebase from 'firebase/app';
 
 @Injectable({
@@ -23,10 +20,7 @@ export class UploadService {
       .put(upload.file);
     const result = await this.uploadTask.on(
       firebase.storage.TaskEvent.STATE_CHANGED,
-      (snapshot) => {
-        upload.progress =
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-      },
+      (snapshot) => {},
       (error) => {
         console.log(error);
       },
@@ -34,7 +28,6 @@ export class UploadService {
         this.uploadTask.snapshot.ref
           .getDownloadURL()
           .then(function (downloadURL) {
-            console.log('File available at', downloadURL);
             upload.url = downloadURL;
           });
       }

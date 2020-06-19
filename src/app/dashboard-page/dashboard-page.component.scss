@@ -10,17 +10,28 @@ mat-card {
   cursor: pointer;
 }
 mat-card img {
-  object-fit: cover; /*this makes the image in src fit to the size specified below*/
-}
-
-.example-header-image {
-  background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
-  background-size: cover;
+  object-fit: cover;
+  height: 400px;
 }
 
 @media (min-width: 600px) {
   mat-card {
     margin: 30px 16px;
     flex: 0 calc(50% - 32px);
+  }
+
+  mat-card img {
+    height: 250px;
+  }
+}
+@media (min-width: 900px) {
+  mat-card img {
+    height: 300px;
+  }
+}
+
+@media (min-width: 1200px) {
+  mat-card img {
+    height: 450px;
   }
 }

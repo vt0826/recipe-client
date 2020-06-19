@@ -1,12 +1,5 @@
-import { User } from './../services/user.model';
-import { Component, OnInit } from '@angular/core';
-import {
-  FormGroup,
-  FormControl,
-  FormBuilder,
-  Validators,
-  FormArray,
-} from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
 import { RecipesService } from '../services/recipes.service';
 import { Router } from '@angular/router';
 import { Upload } from '../services/upload';
@@ -40,9 +33,18 @@ export class CreateRecipePageComponent {
     });
   }
 
+  addStepGroup() {
+    return this._fb.group({
+      title: [],
+      instruction: [],
+      pictureUrl: [],
+      videoUrl: [],
+    });
+  }
+
   create() {
     const user = this.auth.getUser();
-    const name = user.displayName ? user.displaName : 'Anonymous';
+    const name = user?.displayName ? user.displaName : 'Anonymous';
     let recipe = {
       name: name,
       title: this.recipeName.value,
@@ -66,15 +68,6 @@ export class CreateRecipePageComponent {
   removeStep(index) {
     this.steps.removeAt(index);
     delete this.allUpLoads[index];
-  }
-
-  addStepGroup() {
-    return this._fb.group({
-      title: [],
-      instruction: [],
-      pictureUrl: [],
-      videoUrl: [],
-    });
   }
 
   onFileSelected(event, i) {

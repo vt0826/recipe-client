@@ -1,13 +1,12 @@
 <div class="timer-container">
   <span>Timer </span>
-
   <mat-form-field class="timer" appearance="fill">
     <input
       matInput
       type="number"
-      min="00"
+      min="0"
       max="59"
-      placeholder=":00"
+      placeholder="00"
       [(ngModel)]="min"
     /> </mat-form-field
   >:
@@ -15,7 +14,7 @@
     <input
       matInput
       type="number"
-      min="00"
+      min="0"
       max="59"
       placeholder="00"
       [(ngModel)]="sec"
@@ -25,18 +24,27 @@
     <button
       *ngIf="!isTimerOn; else pause"
       mat-raised-button
-      class="timer"
+      class="timer timer-button"
       [disabled]="isTimerOn"
       (click)="startTimer()"
     >
       start
     </button>
     <ng-template #pause>
-      <button mat-raised-button class="timer" (click)="pauseTimer()">
+      <button
+        mat-raised-button
+        class="timer timer-button"
+        (click)="pauseTimer()"
+      >
         Pause
       </button>
     </ng-template>
-    <button mat-raised-button color="warn" class="timer" (click)="resetTimer()">
+    <button
+      mat-raised-button
+      color="warn"
+      class="timer timer-button"
+      (click)="resetTimer()"
+    >
       Reset
     </button>
   </div>

@@ -1,8 +1,5 @@
-import { map, filter, mergeMap } from 'rxjs/operators';
-
-import { Component, OnInit } from '@angular/core';
-import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
-import { Title } from '@angular/platform-browser';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -12,7 +9,6 @@ import { AuthService } from '../services/auth.service';
 })
 export class NavbarComponent {
   constructor(private router: Router, public auth: AuthService) {}
-  Title = 'recipe';
   navigateTo(path) {
     this.router.navigate([path]);
   }

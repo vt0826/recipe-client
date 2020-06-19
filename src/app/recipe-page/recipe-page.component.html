@@ -1,12 +1,15 @@
 <a routerLink="/"> < Back to Recipes</a>
 
 <div *ngIf="recipe" class="recipe-container">
+<!------------recipe info-------------------->
   <div class="recipe-info">
     <h1>{{ recipe.title }}</h1>
     <p class="body-1">by {{ recipe.name }}</p>
     <p class="caption">{{ recipe.updatedAt | date: "medium" }}</p>
     <p class="caption">{{ recipe.description }}</p>
   </div>
+
+  <!------------setps detail-------------------->
   <div classs="recipe-steps">
     <mat-vertical-stepper [linear]="isLinear" #stepper>
       <mat-step
@@ -37,6 +40,8 @@
             </div>
           </div>
           <timer></timer>
+
+          <!------------step buttons-------------------->
           <div>
             <button mat-button matStepperPrevious>Back</button>
             <button mat-button matStepperNext>Next</button>

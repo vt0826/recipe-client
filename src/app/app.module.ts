@@ -20,7 +20,6 @@ import { RecipePageComponent } from './recipe-page/recipe-page.component';
 import { TimerComponent } from './timer/timer.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { NotFoundPageComponent } from './not-found-page/not-found-page.component';
-import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +30,6 @@ import { LoginComponent } from './login/login.component';
     NotFoundPageComponent,
     NavbarComponent,
     TimerComponent,
-    LoginComponent,
     SafePipe,
   ],
   imports: [
