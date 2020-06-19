@@ -35,7 +35,7 @@ export class RecipePageComponent implements OnInit {
     this.route.paramMap.subscribe((params) => {
       const id = params.get('id');
       this.service.getRecipeById(id).subscribe((response) => {
-        this.recipe = response[0];
+        this.recipe = response;
       });
     });
   }

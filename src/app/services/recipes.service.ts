@@ -15,8 +15,7 @@ export class RecipesService {
     return this.http.get(this.baseUrl + '/recipes');
   }
   getRecipeById(id) {
-    const options = id ? { params: new HttpParams().set('id', id) } : {};
-    return this.http.get(this.baseUrl + '/recipes', options);
+    return this.http.get(this.baseUrl + `/recipes/${id}`);
   }
 
   createRecipe(recipe) {
