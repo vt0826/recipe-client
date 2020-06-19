@@ -43,23 +43,27 @@ export class CreateRecipePageComponent {
   }
 
   create() {
-    const user = this.auth.getUser();
-    const name = user?.displayName ? user.displaName : 'Anonymous';
     let recipe = {
-      name: name,
+      name: 'Anonymous',
       title: this.recipeName.value,
       description: this.description.value,
       steps: this.steps.value,
     };
 
     const recipeWithUrl = this.inserPicUrltoSteps(recipe);
-
-    this.service.createRecipe(recipeWithUrl).subscribe({
-      next: (data: any) => {
-        let path = '';
-        this.router.navigate([path]);
+    this.auth.user$.subscribe({
+      next: (user) => {
+        {
+          recipe.name = user.displayName ? user.displayName : user.email;
+          this.service.createRecipe(recipeWithUrl).subscribe({
+            next: (data: any) => {
+              let path = '';
+              this.router.navigate([path]);
+            },
+            error: (error) => console.error('There was an error!', error),
+          });
+        }
       },
-      error: (error) => console.error('There was an error!', error),
     });
   }
   addNewStep() {
@@ -73,12 +77,10 @@ export class CreateRecipePageComponent {
   onFileSelected(event, i) {
     this.selectedFile = event.target.files;
     let file = this.selectedFile.item(0);
-    console.log(file, 'file');
 
     this.currentUpload = new Upload(file);
 
     this.allUpLoads[i] = this.currentUpload;
-    console.log(this.currentUpload, 'con');
     this.upload.pushUpload(this.currentUpload);
   }
 
